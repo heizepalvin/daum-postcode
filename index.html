@@ -33,14 +33,12 @@
         console.log("onReceivedActivityMessageViaJavascriptInterface " + event);
       }
 
-    //   function postMessageToiOS(postData) {
-    //     window.webkit.messageHandlers.callBackHandler.postMessage(postData);
-    //   }
-
       var element_layer = document.getElementById("layer");
       function execDaumPostcode() {
         new daum.Postcode({
           oncomplete: function (data) {
+            console.log(data);
+
             var jibunAddress = "";
 
             if (data.jibunAddress == "") {
@@ -56,8 +54,10 @@
               sigunguCode: data.sigunguCode,
               address: data.address
             };
-            // window.postMessageToiOS(postData);
-            window.Android.postMessageToAOS(postData);
+
+            var jsonString = JSON.stringify(postData);
+            
+            window.Android.postMessageToAOS(jsonString);
           },
           width: "100%",
           height: "100%",
