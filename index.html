@@ -33,9 +33,9 @@
         console.log("onReceivedActivityMessageViaJavascriptInterface " + event);
       }
 
-      function postMessageToiOS(postData) {
-        window.webkit.messageHandlers.callBackHandler.postMessage(postData);
-      }
+    //   function postMessageToiOS(postData) {
+    //     window.webkit.messageHandlers.callBackHandler.postMessage(postData);
+    //   }
 
       var element_layer = document.getElementById("layer");
       function execDaumPostcode() {
@@ -56,7 +56,7 @@
               sigunguCode: data.sigunguCode,
               address: data.address
             };
-            window.postMessageToiOS(postData);
+            // window.postMessageToiOS(postData);
             window.Android.postMessageToAOS(postData);
           },
           width: "100%",
